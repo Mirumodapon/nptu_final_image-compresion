@@ -12,6 +12,8 @@ const io = socketIO(server, {
 });
 
 // express app require handler
+app.use(require('cors')({ origin: 'http://localhost:3000' }));
+app.use('/static', express.static('watch'));
 
 // socket.io app i/o
 // io.on('connection', (socket) => {});

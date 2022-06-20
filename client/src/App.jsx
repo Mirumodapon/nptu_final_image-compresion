@@ -6,6 +6,7 @@ import Block from './Block';
 function App() {
   const [socket, setSocket] = useState(null);
   const [data, setData] = useState([]);
+  const [img, setImg] = useState(null);
 
   useEffect(() => {
     initSocket();
@@ -18,6 +19,12 @@ function App() {
       // setData(data);
       // console.log(a);
       setData(a);
+      fetch('http://localhost:5004/static/output.bmp')
+        .then((x) => x.blob())
+        .then((image) => {
+          const localUrl = URL.createObjectURL(image);
+          setImg(localUrl);
+        });
     });
 
     setSocket(_socket);
@@ -25,9 +32,15 @@ function App() {
 
   return (
     <main>
-      {data.map(([x, ...value]) => (
-        <Block value={value} key={x} />
-      ))}
+      <section className="left">
+        {data.map(([x, ...value]) => (
+          <Block value={value} key={x} />
+        ))}
+      </section>
+      <section className="right">
+        <img src="http://localhost:5004/static/static.bmp" />
+        {<img src={img} />}
+      </section>
     </main>
   );
 }
