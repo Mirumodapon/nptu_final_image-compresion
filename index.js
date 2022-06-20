@@ -2,7 +2,7 @@ const fs = require('fs');
 const server = require('./app/server');
 const watch = require('./app/watch');
 
-server.http.listen(5004, () => console.log('Server start'));
+server.http.listen(5004, () => console.log('Server is starting on port 5004...'));
 
 watch('watch', ({ f, e }) => {
   const best = fs.readFileSync('./watch/best.txt', { encoding: 'utf-8' });

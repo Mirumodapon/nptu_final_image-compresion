@@ -38,7 +38,7 @@ function App() {
         ))}
       </section>
       <section className="right">
-        <img src="http://localhost:5004/static/static.bmp" />
+        <img src="http://localhost:5004/static/original.bmp" />
         {<img src={img} />}
       </section>
     </main>
