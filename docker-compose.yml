@@ -1,0 +1,11 @@
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+  backend:
+    build: ./backend 
+    ports:
+      - "5004:5004"
+    volumes:
+      - ./../:/usr/src/app/watch
